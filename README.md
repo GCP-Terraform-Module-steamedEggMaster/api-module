@@ -57,13 +57,6 @@ module "api_enable" {
 
 ### 5. 지원 버전
 
-#### a. Module ref 버전
-| 버전 범위 | 설명                              |
-|-----------|-----------------------------------|
-| `1.0.0`   | 최신 버전              |
-| `1.0.0`   | 안정적인 버전, 권장              |
-| `1.0.0`   | 버그 수정 버전        |
-
 #### a.  Terraform 버전
 | 버전 범위 | 설명                              |
 |-----------|-----------------------------------|
@@ -109,8 +102,13 @@ go test -v ./test
 안정된 버전을 사용하려면 `?ref=<version>`을 활용하세요:
 
 ```hcl
-source = "git::https://github.com/GCP-Terraform-Module-steamedEggMaster/provider-module.git?ref=v1.0.0"
+source = "git::https://github.com/GCP-Terraform-Module-steamedEggMaster/api-module.git?ref=v1.0.0"
 ```
+
+### Module ref 버전
+| Major | Minor | Patch |
+|-----------|-----------|----------|
+| `1.0.0`   |    |   |
 
 <br>
 
