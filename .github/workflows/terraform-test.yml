@@ -25,20 +25,26 @@ jobs:
       with:
         credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
-    # 3. Go 설치
+    # 3. Terraform 설치
+    - name: Install Terraform
+      uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_version: 1.10.3 # Terraform 최신 안정 버전 사용
+
+    # 4. Go 설치
     - name: Set up Go
       uses: actions/setup-go@v4
       with:
         go-version: 1.21
 
-    # 4. Go 모듈 초기화
+    # 5. Go 모듈 초기화
     - name: Initialize Go Module
       run: |
         cd test
         go mod init github.com/GCP-Terraform-Module-steamedEggMaster/api-module # 모듈 이름 지정
         go mod tidy
 
-    # 5. Terraform 테스트 실행
+    # 6. Terraform 테스트 실행
     - name: Run Terraform Tests
       working-directory: ./test
       run: go test -v
