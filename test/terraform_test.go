@@ -1,7 +1,6 @@
 package test
 
 import (
-	"encoding/json"
 	"os"
 	"strings"
 	"testing"
@@ -35,16 +34,8 @@ func TestTerraformModule(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// 출력값 검증
-	// Terraform 출력값 가져오기
-	output := terraform.Output(t, terraformOptions, "enabled_apis")
-
-	// 출력값을 JSON 배열로 파싱
-	var enabledAPIs []string
-	err := json.Unmarshal([]byte(output), &enabledAPIs)
-	if err != nil {
-		t.Fatalf("출력값 파싱 실패: %v", err)
-	}
-	
+	// Terraform이 활성화한 API 목록 가져오기
+	enabledAPIs := terraform.OutputList(t, terraformOptions, "enabled_apis")
 	// 활성화한 API에 활성화하고자 한 API가 포함되어 있는지 확인하기
 	assert.Subset(t, enabledAPIs, apiServices, "Terraform이 활성화한 API가 예상과 다릅니다.")
 }

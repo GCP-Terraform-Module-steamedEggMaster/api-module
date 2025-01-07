@@ -29,6 +29,7 @@ jobs:
       uses: hashicorp/setup-terraform@v2
       with:
         terraform_version: 1.10.3 # Terraform 최신 안정 버전 사용
+        terraform_wrapper: false # Disable the wrapper
 
     # 4. Go 설치
     - name: Set up Go
