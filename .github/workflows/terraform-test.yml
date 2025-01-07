@@ -25,18 +25,18 @@ jobs:
       with:
         credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
-    # 3. Go 모듈 초기화
-    - name: Initialize Go Module
-      run: |
-        cd test
-        go mod init github.com/username/repo-name # 모듈 이름 지정
-        go mod tidy
-
-    # 4. Go 설치
+    # 3. Go 설치
     - name: Set up Go
       uses: actions/setup-go@v4
       with:
         go-version: 1.19
+
+    # 4. Go 모듈 초기화
+    - name: Initialize Go Module
+      run: |
+        cd test
+        go mod init github.com/GCP-Terraform-Module-steamedEggMaster/api-module # 모듈 이름 지정
+        go mod tidy
 
     # 5. Terraform 테스트 실행
     - name: Run Terraform Tests
