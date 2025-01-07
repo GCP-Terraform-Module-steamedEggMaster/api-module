@@ -8,7 +8,6 @@ import (
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	"github.com/stretchr/testify/assert"
-	"github.com/joho/godotenv"
 )
 
 func TestTerraformModule(t *testing.T) {
@@ -19,8 +18,11 @@ func TestTerraformModule(t *testing.T) {
 	apiServices := strings.Split(apiServicesRaw, ",")
 
 	disableOnDestroyRaw := os.Getenv("DISABLE_ON_DESTROY")
-	disableOnDestroy := strconv.ParseBool(disableOnDestroyRaw)
-	
+	disableOnDestroy, err := strconv.ParseBool(disableOnDestroyRaw)
+	if err != nil {
+		t.Fatalf("DISABLE_ON_DESTROY 환경 변수 값이 유효하지 않습니다: %v", err)
+	}
+
 	// Terraform 모듈 옵션 설정
 	terraformOptions := &terraform.Options{
 		TerraformDir: "../", // 모듈 경로
