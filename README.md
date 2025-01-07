@@ -1,4 +1,4 @@
-# api-module
+# 📘 api-module
 GCP Terraform enable api module repo
 
 이 모듈은 Google Cloud API 활성화를 위한 모듈입니다. <br>
@@ -56,6 +56,13 @@ module "api_enable" {
 <br>
 
 ### 5. 지원 버전
+
+#### a. Module ref 버전
+| 버전 범위 | 설명                              |
+|-----------|-----------------------------------|
+| `1.0.0`   | 최신 버전              |
+| `1.0.0`   | 안정적인 버전, 권장              |
+| `1.0.0`   | 버그 수정 버전        |
 
 #### a.  Terraform 버전
 | 버전 범위 | 설명                              |
