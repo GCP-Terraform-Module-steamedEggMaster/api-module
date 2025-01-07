@@ -12,7 +12,6 @@ jobs:
     env:
       GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
       API_SERVICES: ${{ secrets.API_SERVICES }}
-      DISABLE_ON_DESTROY: "true"
 
     steps:
     # 1. GitHub Repository 클론

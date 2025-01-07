@@ -17,19 +17,12 @@ func TestTerraformModule(t *testing.T) {
 	apiServicesRaw := os.Getenv("API_SERVICES")
 	apiServices := strings.Split(apiServicesRaw, ",")
 
-	disableOnDestroyRaw := os.Getenv("DISABLE_ON_DESTROY")
-	disableOnDestroy, err := strconv.ParseBool(disableOnDestroyRaw)
-	if err != nil {
-		t.Fatalf("DISABLE_ON_DESTROY 환경 변수 값이 유효하지 않습니다: %v", err)
-	}
-
 	// Terraform 모듈 옵션 설정
 	terraformOptions := &terraform.Options{
 		TerraformDir: "../", // 모듈 경로
 		Vars: map[string]interface{}{
 			"project_id":  projectID,
 			"api_services":  apiServices,
-			"disable_on_destroy":  disableOnDestroy,
 		},
 	}
 
