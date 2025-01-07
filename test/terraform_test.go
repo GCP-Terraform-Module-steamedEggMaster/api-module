@@ -3,7 +3,6 @@ package test
 import (
 	"os"
 	"strings"
-	"strconv"
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
