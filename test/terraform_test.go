@@ -34,7 +34,7 @@ func TestTerraformModule(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// 출력값 검증
-	// Terraform이 활성화한 API 목록 가져오기
+	// Terraform이 활성화한 API 목록 가져오기 - 배열
 	enabledAPIs := terraform.OutputList(t, terraformOptions, "enabled_apis")
 	// 활성화한 API에 활성화하고자 한 API가 포함되어 있는지 확인하기
 	assert.Subset(t, enabledAPIs, apiServices, "Terraform이 활성화한 API가 예상과 다릅니다.")
