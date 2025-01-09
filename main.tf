@@ -10,7 +10,7 @@ resource "google_project_service" "enabled_services" {
 
   # Timeout 설정
   timeouts {
-    create                    = var.timeout_create # 생성 제한 시간
+    create = var.timeout_create # 생성 제한 시간
     read   = var.timeout_read   # 읽기 제한 시간
     update = var.timeout_update # 업데이트 제한 시간
     delete = var.timeout_delete # 삭제 제한 시간
