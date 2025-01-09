@@ -6,8 +6,23 @@ on:
       - main
 
 jobs:
+  guard:
+    runs-on: ubuntu-latest
+    outputs:
+      continue: ${{ github.actor != 'github-actions[bot]' }}
+    steps:
+    - name: Check Actor
+      run: |
+        if [[ "${{ github.actor }}" == "github-actions[bot]" ]]; then
+          echo "Bot detected, stopping workflow."
+          echo "continue=false" >> $GITHUB_ENV
+          exit 0
+        else
+          echo "continue=true" >> $GITHUB_ENV
+
   terraform-test:
-    if: ${{ github.actor != 'github-actions[bot]' }}
+    if: ${{ needs.guard.outputs.continue == 'true' }}
+    needs: guard
     runs-on: ubuntu-latest
 
     steps:
