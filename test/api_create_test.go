@@ -9,7 +9,7 @@ import (
 func TestTerraformModule(t *testing.T) {
 	// Terraform 모듈 옵션 설정
 	terraformOptions := &terraform.Options{
-		TerraformDir: "../examples/api-test", // 모듈 경로
+		TerraformDir: "../examples/api-create-test", // 모듈 경로
 	}
 
 	// Terraform Destroy 실행 (테스트 완료 후 정리)
