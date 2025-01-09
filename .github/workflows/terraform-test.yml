@@ -19,6 +19,7 @@ jobs:
           exit 0
         else
           echo "continue=true" >> $GITHUB_ENV
+        fi
 
   terraform-test:
     if: ${{ needs.guard.outputs.continue == 'true' }}
