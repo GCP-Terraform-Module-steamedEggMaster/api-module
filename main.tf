@@ -7,7 +7,6 @@ resource "google_project_service" "enabled_services" {
   project                             = var.project                                 # GCP 프로젝트 ID
   disable_on_destroy                  = var.disable_on_destroy                      # 리소스 삭제 시 서비스 비활성화 여부
   disable_dependent_services          = var.disable_dependent_services              # 종속된 서비스 비활성화 여부
-  check_if_service_has_usage_on_destroy = var.check_if_service_has_usage_on_destroy # 삭제 시 사용 여부 확인
 
   # Timeout 설정
   timeouts {

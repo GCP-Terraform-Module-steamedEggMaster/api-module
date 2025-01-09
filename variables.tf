@@ -23,12 +23,6 @@ variable "disable_dependent_services" {
   default     = false
 }
 
-variable "check_if_service_has_usage_on_destroy" {
-  description = "삭제 시 서비스 사용 여부 확인 (기본값: false)"
-  type        = bool
-  default     = false
-}
-
 # Timeout 변수
 variable "timeout_create" {
   description = "리소스 생성 제한 시간"
