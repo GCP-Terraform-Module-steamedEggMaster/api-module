@@ -7,8 +7,6 @@ on:
 
 jobs:
   terraform-test:
-    if: ${{ needs.guard.outputs.continue == 'true' }}
-    needs: guard
     runs-on: ubuntu-latest
 
     steps:
