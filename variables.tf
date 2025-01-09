@@ -1,16 +1,55 @@
-variable "project_id" {
-  description = "GCP 프로젝트 ID"
-  type        = string
+# 필수 변수
+variable "services" {
+  description = "활성화할 GCP 서비스들의 목록 (예: [compute.googleapis.com, storage.googleapis.com])"
+  type        = list(string)
 }
 
-variable "api_services" {
-  description = "활성화할 API 이름 목록"
-  type        = list(string)
-  default     = [] # 기본값은 빈 리스트
+# 선택적 변수
+variable "project" {
+  description = "GCP 프로젝트 ID (선택 사항, 제공되지 않으면 Provider 프로젝트 사용)"
+  type        = string
+  default     = null
 }
 
 variable "disable_on_destroy" {
-  description = "Terraform destroy 시 API를 비활성화할지 여부"
+  description = "리소스 삭제 시 서비스 비활성화 여부 (기본값: false)"
   type        = bool
   default     = false
+}
+
+variable "disable_dependent_services" {
+  description = "종속된 서비스 비활성화 여부 (기본값: false)"
+  type        = bool
+  default     = false
+}
+
+variable "check_if_service_has_usage_on_destroy" {
+  description = "삭제 시 서비스 사용 여부 확인 (기본값: false)"
+  type        = bool
+  default     = false
+}
+
+# Timeout 변수
+variable "timeout_create" {
+  description = "리소스 생성 제한 시간"
+  type        = string
+  default     = "20m"
+}
+
+variable "timeout_read" {
+  description = "리소스 읽기 제한 시간"
+  type        = string
+  default     = "10m"
+}
+
+variable "timeout_update" {
+  description = "리소스 업데이트 제한 시간"
+  type        = string
+  default     = "20m"
+}
+
+variable "timeout_delete" {
+  description = "리소스 삭제 제한 시간"
+  type        = string
+  default     = "20m"
 }
